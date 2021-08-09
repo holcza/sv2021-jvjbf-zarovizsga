@@ -31,7 +31,7 @@ public class PlayerControllerRestIT {
         PlayerDTO result =
                 template.postForObject("/api/players",
                         new CreatePlayerCommand("John Doe", LocalDate.of(1991,11,10),PositionType.CENTER_BACK),
-                                PlayerDTO.class);
+                        PlayerDTO.class);
 
 
         assertEquals("John Doe",result.getName());
@@ -88,7 +88,7 @@ public class PlayerControllerRestIT {
     void testCreatePlayerWithInvalidName(){
         Problem result =
                 template.postForObject("/api/players",
-                        new CreateTeamCommand(""),
+                        new CreatePlayerCommand("", LocalDate.now(), PositionType.CENTER_BACK),
                         Problem.class);
 
         assertEquals(Status.BAD_REQUEST,result.getStatus());
