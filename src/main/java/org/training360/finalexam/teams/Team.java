@@ -2,6 +2,7 @@ package org.training360.finalexam.teams;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.training360.finalexam.players.Player;
 
@@ -22,6 +23,7 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy = "team",cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
     private List<Player> players;
 
     public Team(String name) {

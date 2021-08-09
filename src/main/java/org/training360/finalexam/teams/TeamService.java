@@ -50,10 +50,20 @@ public class TeamService {
     public TeamDTO addPlayerToTeam(long id, UpdateWithExistingPlayerCommand command) {
         Team team = repo.getById(id);
 
+        PlayerDTO player = playerService.findPlayerById(command.getId());
+
+        PositionType position= player.getPosition();
+
         int count = 0;
 
         for (Player p: team.getPlayers()){
+            if (p.getPosition()==position){
+                count++;
+            }
+        }
 
+        if (count>=2){
+            throw new IllegalArgumentException("Player can not be added");
         }
 
         playerService.addPlayerToTeam(team,command.getId());

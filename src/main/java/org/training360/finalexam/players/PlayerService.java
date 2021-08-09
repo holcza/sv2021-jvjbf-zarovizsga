@@ -38,7 +38,8 @@ public class PlayerService {
     }
 
     public PlayerDTO findPlayerById(long id){
-        return modelMapper.map(repo.findById(id),PlayerDTO.class);
+
+        return modelMapper.map(repo.findById(id).get(),PlayerDTO.class);
     }
 
     public void addPlayerToTeam(Team team, long id) {

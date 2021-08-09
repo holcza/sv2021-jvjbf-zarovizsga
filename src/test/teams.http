@@ -26,7 +26,7 @@ PUT http://localhost:8080/api/teams/2/players
 Content-Type: application/json
 
 {
-  "playerId": 1
+  "id": 2
 }
 
 
